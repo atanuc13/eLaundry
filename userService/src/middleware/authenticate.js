@@ -11,7 +11,9 @@ const authenticate = (req,res,next) => {
         
                 if(decode.role == roleId)
                     {
-                        next()
+                        res.status(200).json({
+                            message:"Authorized"
+                        })
                     }
                 else{
                     res.status(401).json({
