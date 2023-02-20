@@ -8,7 +8,7 @@ router.get ('/',(req,res)=>{
 });
 
 // For Institution
-router.get ('/Institutions',async (req,res)=>{
+router.get ('/institutions',async (req,res)=>{
     const institution=require('../models/institution');
     try{
     const inst = await institution.find();
@@ -20,7 +20,7 @@ router.get ('/Institutions',async (req,res)=>{
 });
 
 //Add new institutions 
-router.post ('/Institutions',async (req,res)=>{
+router.post ('/institutions',async (req,res)=>{
     const institution=require('../models/institution');
    const inst=new institution({
         name:req.body.name
@@ -37,10 +37,25 @@ router.post ('/Institutions',async (req,res)=>{
     
 });
 
+// Delete institution
+router.delete('/institutions',async(req,res) => {
+    const inst=require('../models/institution');
+    console.log(req.body.id);
+    try{
+    //console.log(inst.findById(req.body.id));
+    await inst.findByIdAndRemove(req.body.id);
+    res.status(200).send("Deleted");
+}
+catch(err){
+    res.json(err);
+}
+});
+
+
 // For Services
 
 //Show services
-router.get ('/Services',async (req,res)=>{
+router.get ('/services',async (req,res)=>{
     const services=require('../models/services');
 try{
 const serv = await services.find();
@@ -53,13 +68,11 @@ catch(err){
    
 });
 
-router.post ('/Services',upload.single('imgPath'),async(req,res)=>{
+router.post ('/services',upload.single('imgPath'),async(req,res)=>{
     const services=require('../models/services');
     let img
     if(req.file){
         img = req.file.path
-        
-    }
     console.log(img)
     const serv = new services({
         name:req.body.name,
@@ -67,17 +80,65 @@ router.post ('/Services',upload.single('imgPath'),async(req,res)=>{
     });
     try{
     const saveService = await serv.save();
-    res.json(saveService);
+    res.status(200).json(saveService);
     }
     catch(err){
-res.json({message: err});
+        res.json({message: err});
+            }
+        }
+        else{
+            res.status(400).send({"message":"Please select image"});
+        }
+        });
+
+router.patch ('/services',upload.single('imgPath'),async(req,res)=>{
+    const services=require('../models/services');
+    let img=null
+    
+    //console.log("image: ",img)
+    const serviceId = req.body.serviceId
+    console.log(serviceId)
+    const fs = require('fs');
+    const service = await services.findById(serviceId)
+    console.log(service._id)
+    console.log(service.imgPath)
+    if("file" in req){
+        img=req.file.path
+        fs.unlink(service.imgPath, (err) => {
+            if (err) {
+                console.log("No previous file exist.");
+                req.status(400).send("No previous file exist.");
+            }
+
+            console.log("Delete File successfully.");
+        });
+            }
+            else 
+            {
+                img=service.imgPath
+            }
+    if(!(req.body.name)){
+        
+        console.log("name not preset")
+    req.name=service.name
     }
-   
+        await services.findOneAndUpdate({_id:service._id},{name:req.body.name,imgPath:img});
+        res.status(200).send("Details Updated successfully");
+
 });
 
-router.put ('/Services',(req,res)=>{
-    res.send('editServices');
-   
-});
+// Service delete
 
+router.delete('/services',async(req,res) => {
+    const serv=require('../models/services');
+    console.log(req.body.id);
+    try{
+    //console.log(inst.findById(req.body.id));
+    await serv.findByIdAndRemove(req.body.id);
+    res.status(200).send("Deleted");
+}
+catch(err){
+    res.json(err);
+}
+});
 module.exports=router;

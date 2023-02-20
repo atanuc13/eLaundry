@@ -14,7 +14,7 @@ const laundrySchema = new mongoose.Schema({
 laundrySchema.products = [{
     pid: { type: mongoose.Schema.Types.ObjectId },
     name: { type: String },
-    price: { type: mongoose.Schema.Types.ObjectId }
+    price: { type: mongoose.Schema.Types.Mixed }
 }];
 
 laundrySchema.pre('save', async function(next) {
