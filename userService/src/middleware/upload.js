@@ -3,7 +3,7 @@ const multer =require('multer')
 
 var storage = multer.diskStorage({
     destination: function(req,file,cb){
-        cb(null,'img')
+        cb(null,'uploads')
     },
     filename: function(req,file,cb){
         let ext=path.extname(file.originalname)
@@ -15,12 +15,9 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage:storage,
     fileFilter: function(req,file,callback){
-        console.log(file.mimetype)
         if(
             file.mimetype == "image/png" ||
-            file.mimetype == "image/jpg" ||
-            file.mimetype == "image/jpeg"
-
+            file.mimetype == "image/jpg"
         ){
             callback(null,true)
         }else{
