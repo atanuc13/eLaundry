@@ -8,9 +8,7 @@ const authenticate = (req,res,next) => {
         const decode = jwt.verify(token,'AB(jfb)k')
         var roleId = req.params.tagId
         req.user = decode
-        
-        
-
+        console.log(decode)
         User.findById(decode._doc._id)
         .then(response => {
             if(decode._doc._id==response._id && decode._doc.email == response.email && decode._doc.role == response.role)

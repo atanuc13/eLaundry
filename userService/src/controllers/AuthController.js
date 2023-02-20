@@ -51,7 +51,7 @@ const login = (req,res,next) => {
             if(result){
                 let token = jwt.sign({...user},'AB(jfb)k',{expiresIn:'2h'})
                 let refreshtoken = jwt.sign({...user},'AB(jfb)k',{expiresIn:'48h'})
-                res.json({
+                res.status(200).json({
                     message: 'Login Successful!',
                     token,
                     refreshtoken
