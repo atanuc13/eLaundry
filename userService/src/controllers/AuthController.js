@@ -49,9 +49,9 @@ const login = (req,res,next) => {
                 })
             }
             if(result){
-                let token = jwt.sign({name: user.name , role: user.role ,email: user.email ,address: user.address ,phone: user.phone ,authenticated: user.authenticated},'AB(jfb)k',{expiresIn:'2h'})
-                let refreshtoken = jwt.sign({name: user.name , role: user.role ,email: user.email ,address: user.address ,phone: user.phone ,authenticated: user.authenticated},'AB(jfb)k',{expiresIn:'48h'})
-                res.json({
+                let token = jwt.sign({...user},'AB(jfb)k',{expiresIn:'2h'})
+                let refreshtoken = jwt.sign({...user},'AB(jfb)k',{expiresIn:'48h'})
+                res.status(200).json({
                     message: 'Login Successful!',
                     token,
                     refreshtoken
@@ -84,7 +84,7 @@ const refreshToken = (req,res,next) => {
             })
         }
         else {
-            let token = jwt.sign({name: user.name , role: user.role ,email: user.email ,address: user.address ,phone: user.phone ,authenticated: user.authenticated},'thesecrettoken',{expiresIn:'1h'})
+            let token = jwt.sign({...user},'thesecrettoken',{expiresIn:'1h'})
             let refreshToken = req.body.refreshToken
             res.status(200).json({
                 message:"Token refreshed successfully!",
