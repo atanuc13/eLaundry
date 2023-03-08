@@ -1,0 +1,42 @@
+.align-middle {
+    display: table;
+    margin: auto;
+}
+
+input {
+    font-size: 18px;
+    padding: 5px;
+    height: 35px;
+    width: 450px;
+    border: 1px solid #194376;
+    outline: none;
+    border-radius: 5px;
+    color: #194376;
+}
+
+datalist {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #194376;
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+    font-family: sans-serif;
+    width: 350px;
+    padding: 5px;
+    max-height: 10rem;
+    overflow-y: auto
+}
+
+option {
+    background-color: white;
+    padding: 4px;
+    color: #194376;
+    margin-bottom: 1px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+option:hover,
+.active {
+    background-color: lightblue;
+}

@@ -8,7 +8,10 @@ const app = express();
 
 
 //Middlewar
-app.use(cors());
+// app.use(cors({
+//     origin: ['http://10.50.5.96:4200/']
+// }));
+app.use(cors({ origin: false }))
 app.use(bodyparser.json());
 
 // Route
