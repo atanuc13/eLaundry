@@ -1,14 +1,15 @@
 const express = require("express");
 const upload = require("../middleware/upload");
+const auth = require('../middleware/auth');
 const router =express.Router();
 
-router.get ('/',(req,res)=>{
+router.get ('/', auth, (req,res)=>{
     res.send('we are in admin');
     // we will call html here.
 });
 
 // For Institution
-router.get ('/institutions',async (req,res)=>{
+router.get ('/institutions', auth, async (req,res)=>{
     const institution=require('../models/institution');
     try{
     const inst = await institution.find();
@@ -20,7 +21,7 @@ router.get ('/institutions',async (req,res)=>{
 });
 
 //Add new institutions 
-router.post ('/institutions',async (req,res)=>{
+router.post ('/institutions', auth, async (req,res)=>{
     const institution=require('../models/institution');
    const inst=new institution({
         name:req.body.name
@@ -38,7 +39,7 @@ router.post ('/institutions',async (req,res)=>{
 });
 
 // Delete institution
-router.delete('/institutions',async(req,res) => {
+router.delete('/institutions', auth, async(req,res) => {
     const inst=require('../models/institution');
     console.log(req.body.id);
     try{
@@ -55,7 +56,7 @@ catch(err){
 // For Services
 
 //Show services
-router.get ('/services',async (req,res)=>{
+router.get ('/services', auth, async (req,res)=>{
     const services=require('../models/services');
 try{
 const serv = await services.find();
@@ -68,7 +69,7 @@ catch(err){
    
 });
 
-router.post ('/services',upload.single('imgPath'),async(req,res)=>{
+router.post ('/services', auth, upload.single('imgPath'),async(req,res)=>{
     const services=require('../models/services');
     let img
     if(req.file){
@@ -91,7 +92,7 @@ router.post ('/services',upload.single('imgPath'),async(req,res)=>{
         }
         });
 
-router.patch ('/services',upload.single('imgPath'),async(req,res)=>{
+router.patch ('/services', auth, upload.single('imgPath'),async(req,res)=>{
     const services=require('../models/services');
     let img=null
     
@@ -129,7 +130,7 @@ router.patch ('/services',upload.single('imgPath'),async(req,res)=>{
 
 // Service delete
 
-router.delete('/services',async(req,res) => {
+router.delete('/services', auth, async(req,res) => {
     const serv=require('../models/services');
     console.log(req.body.id);
     try{
