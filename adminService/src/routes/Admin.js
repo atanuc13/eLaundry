@@ -96,7 +96,7 @@ router.patch ('/services',upload.single('imgPath'),async(req,res)=>{
     let img=null
     
     //console.log("image: ",img)
-    const serviceId = req.body.serviceId
+    const serviceId = req.body.id
     console.log(serviceId)
     const fs = require('fs');
     const service = await services.findById(serviceId)
@@ -104,12 +104,12 @@ router.patch ('/services',upload.single('imgPath'),async(req,res)=>{
     console.log(service.imgPath)
     if("file" in req){
         img=req.file.path
-        fs.unlink(service.imgPath, (err) => {
+        fs.unlink("./"+service.imgPath, (err) => {
             if (err) {
                 console.log("No previous file exist.");
-                req.status(400).send("No previous file exist.");
+                res.status(400).send("No previous file exist.");
             }
-
+            else
             console.log("Delete File successfully.");
         });
             }
