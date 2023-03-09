@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Laundry = require('../models/laundry');
+const auth = require('../middleware/auth');
 
-router.get('/laundries/:id', async(req, resp) => {
+router.get('/laundries/:id', auth, async(req, resp) => {
     try {
         const laundry = await Laundry.findById(req.params.id);
         resp.send(laundry);
@@ -12,7 +13,7 @@ router.get('/laundries/:id', async(req, resp) => {
 });
 
 
-router.get('/laundriesbycollegeid/:id', async(req, resp) => {
+router.get('/laundriesbycollegeid/:id', auth, async(req, resp) => {
     try {
         const laundries = await Laundry.find({ collegeId: req.params.id });
         resp.send(laundries);
@@ -22,7 +23,7 @@ router.get('/laundriesbycollegeid/:id', async(req, resp) => {
 });
 
 
-router.post('/laundries', async(req, resp) => {
+router.post('/laundries', auth, async(req, resp) => {
     try {
         const laundry = new Laundry({
             ...req.body
@@ -35,7 +36,7 @@ router.post('/laundries', async(req, resp) => {
 });
 
 
-router.put('/laundries/:id', async(req, resp) => {
+router.put('/laundries/:id', auth, async(req, resp) => {
     try {
         let laundry = await Laundry.findById(req.params.id);
         if (!laundry) {
