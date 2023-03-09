@@ -35,4 +35,4 @@ app.listen(PORT, () => {
 app.use('/api/user', UserRoute)
 app.use('/api', AuthRoute)
 
-// eurekaHelper.registerWithEureka('user-service', PORT);
+eurekaHelper.registerWithEureka('user-service', PORT);
