@@ -41,8 +41,8 @@ const login = (req, res, next) => {
     console.log(username, password)
     User.findOne({ $or: [{ email: username }, { phone: username }] })
         .then(user => {
-            if (user.authenticated) {
-                if (user) {
+            if (user) {
+                if (user.authenticated) {
                     bcrypt.compare(password, user.password, function(err, result) {
                         if (err) {
                             res.json({
@@ -64,13 +64,14 @@ const login = (req, res, next) => {
                         }
                     })
                 } else {
-                    res.json({
-                        message: 'No User found!'
+                    res.status(401).json({
+                        message: "Unautherized"
                     })
+                    
                 }
             } else {
-                res.status(401).json({
-                    message: "Unautherized"
+                res.json({
+                    message: 'No User found!'
                 })
             }
         })
