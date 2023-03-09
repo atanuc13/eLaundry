@@ -1,9 +1,11 @@
+require('dotenv/config');
 const url = process.env.USER_URL;
 const role = process.env.USER_ROLE
 const axios = require("axios");
 
 const authFunc = async(req, resp, next) => {
     try {
+        console.log(url, role)
         const token = req.header('Authorization').replace('Bearer ', '');
         await axios.get(url + "/" + role, { headers: { Authorization: `Bearer ${token}` } })
         next();

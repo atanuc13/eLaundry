@@ -9,7 +9,7 @@ router.get ('/', auth, (req,res)=>{
 });
 
 // For Institution
-router.get ('/institutions', auth, async (req,res)=>{
+router.get ('/institutions', async (req,res)=>{
     const institution=require('../models/institution');
     try{
     const inst = await institution.find();
@@ -56,7 +56,7 @@ catch(err){
 // For Services
 
 //Show services
-router.get ('/services', auth, async (req,res)=>{
+router.get ('/services', async (req,res)=>{
     const services=require('../models/services');
 try{
 const serv = await services.find();
