@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/orderService');
+const authUser = require('../middleware/authUser');
+const authLaundry = require('../middleware/authLaundry');
 
 
 
 // post an Order
-router.post('/', async (req, res) => {
+router.post('/', authUser, async (req, res) => {
 
     const post = new Post({
         uId: req.body.uId,
@@ -23,7 +25,7 @@ router.post('/', async (req, res) => {
 
 });
 //get for filter on UserId
-router.get('/orderbyuId/:id', async (req, resp) => {
+router.get('/orderbyuId/:id', authUser, async (req, resp) => {
     try {
         console.log(req.params.id)
         const laundries = await Post.find({ uId: req.params.id });
@@ -33,7 +35,7 @@ router.get('/orderbyuId/:id', async (req, resp) => {
     }
 });
 //get for filter on LaundaryId
-router.get('/orderbylId/:id', async (req, resp) => {
+router.get('/orderbylId/:id', authLaundry, async (req, resp) => {
     try {
         const laundries = await Post.find({ lId: req.params.id });
         resp.send(laundries);
@@ -43,7 +45,7 @@ router.get('/orderbylId/:id', async (req, resp) => {
 });
 
 //Update a status
-router.patch('/:postId', async (req, res) => {
+router.patch('/:postId', authLaundry, async (req, res) => {
     try {
         const updatePost = await Post.updateOne(
             { _id: req.params.postId },
