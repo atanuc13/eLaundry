@@ -133,6 +133,21 @@ router.delete('/services',async(req,res) => {
     const serv=require('../models/services');
     console.log(req.body.id);
     try{
+        const serviceId = req.body.id
+    console.log(serviceId)
+    const fs = require('fs');
+    const service = await serv.findById(serviceId)
+    console.log(service._id)
+    console.log(service.imgPath)
+    fs.unlink("./"+service.imgPath, (err) => {
+        if (err) {
+            console.log("No previous file exist.");
+            res.status(400).send("No previous file exist.");
+        }
+        else
+        console.log("Delete File successfully.");
+    })
+
     //console.log(inst.findById(req.body.id));
     await serv.findByIdAndRemove(req.body.id);
     res.status(200).send("Deleted");
