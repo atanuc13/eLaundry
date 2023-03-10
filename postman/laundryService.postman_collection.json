@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "fd1d945f-0ce1-4cda-9122-7403951ebe7d",
+		"name": "laundryService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25160156"
+	},
+	"item": [
+		{
+			"name": "post a laundry entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\"pid\": \"625bf9518db9db3705f38013\", \"name\": \"jeans\", \"price\": {\"w\": \"10\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf97f8db9db3705f3801f\", \"name\": \"shirt\", \"price\": {\"w\": \"11\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf96f8db9db3705f38019\", \"name\": \"half paint\", \"price\": {\"w\": \"8\", \"i\": \"5\"}}\r\n    ],\r\n    \"collegeId\": \"625bf9618db9db3705f38016\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/laundries",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"laundries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a laundry entry based on id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\"pid\": \"625bf9518db9db3705f38013\", \"name\": \"jeans\", \"price\": {\"w\": \"10\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf97f8db9db3705f3801f\", \"name\": \"shirt\", \"price\": {\"w\": \"11\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf96f8db9db3705f38019\", \"name\": \"half paint\", \"price\": {\"w\": \"8\", \"i\": \"5\"}}\r\n    ],\r\n    \"collegeId\": \"625bf9618db9db3705f38016\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/laundries/63e6488b011fb0423c03b0bf",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"laundries",
+						"63e6488b011fb0423c03b0bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a laundry entry based on id Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\"pid\": \"625bf9518db9db3705f38013\", \"name\": \"kurta\", \"price\": {\"w\": \"10\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf97f8db9db3705f3801f\", \"name\": \"pajama\", \"price\": {\"w\": \"11\", \"i\": \"5\"}}\r\n    ]\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4001/laundries/63e6488b011fb0423c03b0bf",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"laundries",
+						"63e6488b011fb0423c03b0bf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a laundry entry based on college id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\"pid\": \"625bf9518db9db3705f38013\", \"name\": \"jeans\", \"price\": {\"w\": \"10\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf97f8db9db3705f3801f\", \"name\": \"shirt\", \"price\": {\"w\": \"11\", \"i\": \"5\"}},\r\n        {\"pid\": \"625bf96f8db9db3705f38019\", \"name\": \"half paint\", \"price\": {\"w\": \"8\", \"i\": \"5\"}}\r\n    ],\r\n    \"collegeId\": \"625bf9618db9db3705f38016\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/laundry-service/laundriesbycollegeid/625bf9618db9db3705f38016",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"laundry-service",
+						"laundriesbycollegeid",
+						"625bf9618db9db3705f38016"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080/laundry-service",
+			"type": "string"
+		},
+		{
+			"key": "user_base_url",
+			"value": "localhost:8080/user-service",
+			"type": "string"
+		}
+	]
+}

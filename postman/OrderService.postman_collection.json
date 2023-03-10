@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "3bc0ddbe-c5b2-4263-b835-777e98804647",
+		"name": "OrderService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25160156"
+	},
+	"item": [
+		{
+			"name": "post an Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uId\":\"6409ebc106cafd834fee5b74\",\r\n     \"lId\": \"640ae3fc4ad489ac8aaef187\",\r\n    \"detail\":{\r\n        \"name\":\"jeans\",\r\n        \"price\":\"200\",\r\n        \"service\":\"wash\",\r\n        \"quantity\":\"10\"\r\n        },\r\n    \"status\":\"ready\",\r\n    \"userAddress\":\"pushpa giri, room no. 35, nitk surarthkal \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/posts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get for filter on UserId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/posts/orderbyuId/6409ebc106cafd834fee5b74",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"orderbyuId",
+						"6409ebc106cafd834fee5b74"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get for filter on LaundaryId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/posts/orderbylId/640ae3fc4ad489ac8aaef187",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"orderbylId",
+						"640ae3fc4ad489ac8aaef187"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\":\"delivered\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/posts/640ae7e61224f0a6a460f9b1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"posts",
+						"640ae7e61224f0a6a460f9b1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080/order-service",
+			"type": "string"
+		}
+	]
+}

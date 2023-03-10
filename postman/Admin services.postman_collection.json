@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "a6fa8d34-8463-43b2-b78f-85c8ebc4981a",
+		"name": "Admin services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25160156"
+	},
+	"item": [
+		{
+			"name": "get institution name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/admin/institutions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"institutions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"NITK\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/institutions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"institutions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete institution",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": \"63e78808288502df5d1eb8d4\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/institutions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"institutions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get the list of services",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/admin/services",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "shirt",
+							"type": "text"
+						},
+						{
+							"key": "imgPath",
+							"type": "file",
+							"src": "/C:/Users/Yogesh/Pictures/icd9.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/services",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update service",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "6409e946e7ed7b5d61753ace",
+							"type": "text"
+						},
+						{
+							"key": "imgPath",
+							"type": "file",
+							"src": "/C:/Users/Yogesh/Pictures/icd9.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/services",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"services"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6409e58d3ade877f5e4945d3",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete service",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"6409ee3633c0dfd4d016a08e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/admin/services",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"admin",
+						"services"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080/admin-service",
+			"type": "string"
+		}
+	]
+}
