@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const UserRoute = require('./src/routes/user')
 const AuthRoute = require('./src/routes/auth')
 
-const eurekaHelper = require('./eureka-helper');
-
 const dotenv = require('dotenv')
 dotenv.config()
 mongoose.connect('mongodb://127.0.0.1/eLaundary');
@@ -34,5 +32,3 @@ app.listen(PORT, () => {
 
 app.use('/api/user', UserRoute)
 app.use('/api', AuthRoute)
-
-eurekaHelper.registerWithEureka('user-service', PORT);

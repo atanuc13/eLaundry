@@ -2,7 +2,6 @@ const express = require("express");
 const bodyparser = require("body-parser");
 const admin = require('./routes/Admin');
 require('dotenv/config');
-const eurekaHelper = require('./eureka-helper');
 var cors = require('cors');
 var mongoose = require('mongoose');
 const app = express();
@@ -26,5 +25,3 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, function(
     console.log("Connected");
 
 });
-
-eurekaHelper.registerWithEureka('admin-service', port);
