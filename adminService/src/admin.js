@@ -25,3 +25,4 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, function(
     console.log("Connected");
 
 });
+console.log(`running on port ${port}`)
