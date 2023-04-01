@@ -1,0 +1,7 @@
+FROM node:14
+WORKDIR  /usr/src/admin
+COPY ./package*.json /usr/scr/admin/
+RUN npm install
+COPY ././ /usr/src/admin/
+EXPOSE 4002
+CMD ["npm","start"]
