@@ -7,7 +7,7 @@ const AuthRoute = require('./src/routes/auth')
 
 const dotenv = require('dotenv')
 dotenv.config()
-mongoose.connect('mongodb://127.0.0.1/eLaundary');
+mongoose.connect('mongodb://db:27017/eLaundary');
 
 const db = mongoose.connection
 

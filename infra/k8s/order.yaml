@@ -1,0 +1,46 @@
+##################################################################################################
+# Order service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: order
+  labels:
+    app: order
+    service: order
+spec:
+  ports:
+  - port: 4004
+    targetPort: 4004
+    name: http
+  selector:
+    app: order
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-v1
+  labels:
+    app: order
+    version: v1
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: order
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: order
+        version: v1
+    spec:
+      containers:
+      - name: order
+        image: order
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4004
+        securityContext:
+          runAsUser: 1000
+---

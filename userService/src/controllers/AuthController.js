@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const { decode } = require('punycode')
 
 const register = (req, res, next) => {
+    console.log('mkc')
     bcrypt.hash(req.body.password, 10, function(err, hashedPass) {
         if (err) {
             res.json({
@@ -67,7 +68,7 @@ const login = (req, res, next) => {
                     res.status(401).json({
                         message: "Unautherized"
                     })
-                    
+
                 }
             } else {
                 res.json({

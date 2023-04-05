@@ -1,0 +1,46 @@
+##################################################################################################
+# admin service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin
+  labels:
+    app: admin
+    service: admin
+spec:
+  ports:
+  - port: 4002
+    targetPort: 4002
+    name: http
+  selector:
+    app: admin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-v1
+  labels:
+    app: admin
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: admin
+        version: v1
+    spec:
+      containers:
+      - name: admin
+        image: adminimg
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4002
+        securityContext:
+          runAsUser: 1000
+---

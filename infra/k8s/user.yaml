@@ -1,0 +1,46 @@
+##################################################################################################
+# user service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: user
+  labels:
+    app: user
+    service: user
+spec:
+  ports:
+  - port: 4001
+    targetPort: 4001
+    name: http
+  selector:
+    app: user
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-v1
+  labels:
+    app: user
+    version: v1
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: user
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: user
+        version: v1
+    spec:
+      containers:
+      - name: user
+        image: user
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4001
+        securityContext:
+          runAsUser: 1000
+---

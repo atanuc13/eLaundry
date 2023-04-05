@@ -1,0 +1,16 @@
+version: '1'
+services:
+  app:
+    image: laundry
+    build: .
+    command: "npm start"
+    ports:
+     - "4003:4003"
+    depends_on:
+      - "mongo"
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27012:27017'

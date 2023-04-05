@@ -1,0 +1,46 @@
+##################################################################################################
+# Laundry service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: laundry
+  labels:
+    app: laundry
+    service: laundry
+spec:
+  ports:
+  - port: 4003
+    targetPort: 4003
+    name: http
+  selector:
+    app: laundry
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laundry-v1
+  labels:
+    app: laundry
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laundry
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: laundry
+        version: v1
+    spec:
+      containers:
+      - name: laundry
+        image: laundry
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4003
+        securityContext:
+          runAsUser: 1000
+---

@@ -1,0 +1,16 @@
+version: '1'
+services:
+  order:
+    image: order
+    build: .
+    command: "npm run dev"
+    ports:
+     - "4004:4004"
+    depends_on:
+      - "mongo"
+
+  mongo:
+    container_name: order-mongo-db
+    image: mongo
+    ports:
+      - '27012:27017'
