@@ -2,7 +2,7 @@ const express = require("express");
 const auth = require('../middleware/auth');
 const router =express.Router();
 
-router.get ('/', auth, (req,res)=>{
+router.get ('/', (req,res)=>{
     res.send('we are in feedBack service');
     // we will call html here.
 });

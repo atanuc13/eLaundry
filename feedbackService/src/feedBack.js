@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyparser.json());
 
 // Route
-app.use('/feedBack', feedBack);
+app.use('/feedback', feedBack);
 
 // run server inn port no. 3000
 const port = process.env.PORT || 3000
