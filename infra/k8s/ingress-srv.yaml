@@ -24,14 +24,21 @@ spec:
                 name: admin
                 port:
                   number: 4002
-          - path: /laundry/?(.*)
+          - path: /laundries/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: laundry
                 port:
                   number: 4003
-          - path: /order/?(.*)
+          - path: /laundriesbycollegeid/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: laundry
+                port:
+                  number: 4003        
+          - path: /posts/?(.*)
             pathType: Prefix
             backend:
               service:
