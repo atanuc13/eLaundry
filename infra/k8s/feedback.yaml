@@ -1,0 +1,46 @@
+##################################################################################################
+# feedback service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: feedback
+  labels:
+    app: feedback
+    service: feedback
+spec:
+  ports:
+  - port: 4005
+    targetPort: 4005
+    name: http
+  selector:
+    app: feedback
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-v1
+  labels:
+    app: feedback
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feedback
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: feedback
+        version: v1
+    spec:
+      containers:
+      - name: feedback
+        image: feedback
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 4005
+        securityContext:
+          runAsUser: 1000
+---

@@ -3,11 +3,39 @@
 		"_postman_id": "b57e325b-ba99-4128-9d71-13de962a8763",
 		"name": "userService",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25160156"
+		"_exporter_id": "25160156",
+		"_collection_link": "https://universal-shadow-686683.postman.co/workspace/25846e6a-2853-4466-b84c-07630625415f/collection/25230837-b57e325b-ba99-4128-9d71-13de962a8763?action=share&creator=25160156&source=collection_link"
 	},
 	"item": [
 		{
 			"name": "Add a laundry user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"S L Laundry\",\r\n    \"email\": \"sllaundry@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": 2,\r\n    \"authenticated\": true,\r\n    \"phone\": \"9475147895\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a laundry user Copy",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -106,7 +134,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"sllaundry@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"raw": "{\r\n    \"username\": \"atanuc13@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -400,7 +428,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "localhost:8080/user-service",
+			"value": "elaundry.com",
 			"type": "string"
 		}
 	]

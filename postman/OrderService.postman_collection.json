@@ -3,7 +3,8 @@
 		"_postman_id": "3bc0ddbe-c5b2-4263-b835-777e98804647",
 		"name": "OrderService",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25160156"
+		"_exporter_id": "25160156",
+		"_collection_link": "https://universal-shadow-686683.postman.co/workspace/25846e6a-2853-4466-b84c-07630625415f/collection/26252435-3bc0ddbe-c5b2-4263-b835-777e98804647?action=share&creator=25160156&source=collection_link"
 	},
 	"item": [
 		{
@@ -13,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"uId\":\"6409ebc106cafd834fee5b74\",\r\n     \"lId\": \"640ae3fc4ad489ac8aaef187\",\r\n    \"detail\":{\r\n        \"name\":\"jeans\",\r\n        \"price\":\"200\",\r\n        \"service\":\"wash\",\r\n        \"quantity\":\"10\"\r\n        },\r\n    \"status\":\"ready\",\r\n    \"userAddress\":\"pushpa giri, room no. 35, nitk surarthkal \"\r\n}",
+					"raw": "{\r\n    \"uId\":\"643feaf61101c69120474b1f\",\r\n     \"lId\": \"643fec01565ff66a16b440a7\",\r\n    \"detail\":{\r\n        \"name\":\"jeans\",\r\n        \"price\":\"200\",\r\n        \"service\":\"wash\",\r\n        \"quantity\":\"10\"\r\n        },\r\n    \"status\":\"ready\",\r\n    \"userAddress\":\"pushpa giri, room no. 35, nitk surarthkal \"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -38,14 +39,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/posts/orderbyuId/6409ebc106cafd834fee5b74",
+					"raw": "{{base_url}}/posts/orderbyuId/643feaf61101c69120474b1f",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"posts",
 						"orderbyuId",
-						"6409ebc106cafd834fee5b74"
+						"643feaf61101c69120474b1f"
 					]
 				}
 			},
@@ -57,14 +58,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/posts/orderbylId/640ae3fc4ad489ac8aaef187",
+					"raw": "{{base_url}}/posts/orderbylId/643fec01565ff66a16b440a7",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"posts",
 						"orderbylId",
-						"640ae3fc4ad489ac8aaef187"
+						"643fec01565ff66a16b440a7"
 					]
 				}
 			},
@@ -85,13 +86,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/posts/640ae7e61224f0a6a460f9b1",
+					"raw": "{{base_url}}/posts/643fec545f72c1d815fcdf0f",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"posts",
-						"640ae7e61224f0a6a460f9b1"
+						"643fec545f72c1d815fcdf0f"
 					]
 				}
 			},
@@ -131,7 +132,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "localhost:8080/order-service",
+			"value": "elaundry.com",
 			"type": "string"
 		}
 	]

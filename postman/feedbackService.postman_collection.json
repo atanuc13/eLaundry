@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "d56496bc-3fa7-4966-8456-349818a5e816",
+		"name": "feedbackService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25160156",
+		"_collection_link": "https://universal-shadow-686683.postman.co/workspace/25846e6a-2853-4466-b84c-07630625415f/collection/25185291-d56496bc-3fa7-4966-8456-349818a5e816?action=share&creator=25160156&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Add feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"userId\":\"643feaf61101c69120474b1f\",\r\n    \"laundryId\":\"643fec01565ff66a16b440a7\",\r\n    \"orderId\":\"643fec545f72c1d815fcdf0f\",\r\n    \"comment\":\"very good service\",\r\n    \"rating\":\"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/feedback",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get feedbacks by order id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"userId\":\"643feaf61101c69120474b1f\",\r\n    \"laundryId\":\"643fec01565ff66a16b440a7\",\r\n    \"orderId\":\"643fec545f72c1d815fcdf0f\",\r\n    \"comment\":\"very good service\",\r\n    \"rating\":\"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/feedback/byorderid/643fec545f72c1d815fcdf0f",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"feedback",
+						"byorderid",
+						"643fec545f72c1d815fcdf0f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get feedback by laundryId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"userId\":\"643feaf61101c69120474b1f\",\r\n    \"laundryId\":\"643fec01565ff66a16b440a7\",\r\n    \"orderId\":\"643fec545f72c1d815fcdf0f\",\r\n    \"comment\":\"very good service\",\r\n    \"rating\":\"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/feedback/bylaundryid/643fec01565ff66a16b440a7",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"feedback",
+						"bylaundryid",
+						"643fec01565ff66a16b440a7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "elaundry.com",
+			"type": "string"
+		}
+	]
+}

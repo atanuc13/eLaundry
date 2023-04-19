@@ -45,3 +45,10 @@ spec:
                 name: order
                 port:
                   number: 4004
+          - path: /feedback/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: feedback
+                port:
+                  number: 4005  
