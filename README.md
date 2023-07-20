@@ -12,7 +12,7 @@ streamlining the process of getting laundry done.
 
 ## Architecture
 
-![Architecture](assets\img\architecture.jpeg)
+![Architecture](assets/img/architecture.jpeg)
 
 ## Installation
 Install docker desktop and enable kubernetes  
